@@ -1,5 +1,6 @@
 use std::io::stdin;
-use rand::Rng;
+// use rand::Rng;
+use rand_core::{RngCore, OsRng};
 
 fn main() {
     println!("Guess the number!");
@@ -7,7 +8,9 @@ fn main() {
     
 
     let mut guess: String = String::new();
-    let secret_number: i32 = rand::thread_rng().gen_range(1..=100);
+    let mut key = [0u8; 32];
+    OsRng.fill_bytes(&mut key);
+    let secret_number = OsRng.next_u32();
 
     println!("The secret number is: {secret_number}");
 
@@ -21,7 +24,7 @@ fn main() {
             .expect("Failed to read line");
         println!("You guessed: {}", guess);
 
-        let numeric_guess: i32 = guess.trim().parse::<i32>().expect("Please type a number!");
+        let numeric_guess: u32 = guess.trim().parse::<u32>().expect("Please type a number!");
 
         if numeric_guess == secret_number {
             println!("You win!");
