@@ -122,7 +122,26 @@ fn main() {
         println!("The value of s2 in the heap memory is: {s2}");
     }
 
+    // Statements & Expressions
+    // statements are instructions that perform some action and do not return a value
+    // expression are instructions that return a value
+    let x = 5; // statement
+    let _y = { // expression
+        x + 1
+    };
+    println!("The value of y is: {_y}");
 
+
+    // Functions do not need a return statement, the last expression is returned
+    let _x = five();
+    println!("The value of x from the five function is: {_x}");
+
+
+
+}
+
+fn five() -> i32 {
+    5
 }
 
 fn print_labeled_measurement(value: i32, unit_label: char) {
