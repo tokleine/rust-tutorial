@@ -1,0 +1,13 @@
+{
+    "configurations": [
+    {
+        "type": "lldb",
+        "request": "launch",
+        "name": "Debug rust with lldb",
+        "program": "${workspaceFolder}/grrs/target/debug/grrs",
+        "args": ["--path","${workspaceFolder}/grrs/src/main.rs","-r","::File"],
+        "cwd": "${workspaceFolder}/grrs",
+        "preLaunchTask": "cargo build"
+    }
+    ]
+}
