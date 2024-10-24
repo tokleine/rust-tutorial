@@ -19,10 +19,10 @@ fn file_doesnt_exist() -> Result<(), Box<dyn std::error::Error>> {
 fn happy_path() -> Result<(), Box<dyn std::error::Error>> {
     let mut cmd = Command::cargo_bin("grrs")?;
 
-    cmd.args(["--path", "tests/cli.rs", "-r", "use assert_cmd::prelude::*;", "-vv"]);
+    cmd.args(["--path", "src/main.rs", "-r", "grrs::find_matches", "-vv"]);
     cmd.assert()
         .success()
-        .stdout(predicate::str::contains("use assert_cmd::prelude::*;"));
+        .stdout(predicate::str::contains("use grrs::find_matches;"));
 
     Ok(())
 }
